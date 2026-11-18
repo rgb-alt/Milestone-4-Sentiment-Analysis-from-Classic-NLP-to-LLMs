@@ -49,12 +49,12 @@ The classifier uses:
 
 ### Classical Model Results
 
-| Model | Accuracy | Macro F1 |
+| Model | Accuracy | Macro-F1 (negative/positive) |
 |---|---:|---:|
 | VADER | 68.30% | 68.40% |
 | NLTK Naive Bayes | 83.34% | 83.28% |
 
-The NLTK Naive Bayes model outperformed VADER on both accuracy and macro F1. For the human-labelled negative and positive classes, it achieved 83.34% accuracy and 83.28% macro F1.
+The NLTK Naive Bayes model outperformed VADER on both accuracy and binary macro-F1. For the human-labelled negative and positive classes, it achieved 83.34% accuracy and 83.28% macro-F1. The VADER macro-F1 value comes from the notebook's `evaluate()` function, which calculates it for only `negative` and `positive`; VADER's printed report also shows a separate macro average that includes its neutral prediction class.
 
 ## Notebook 2: Claude Haiku Sentiment Classification
 
@@ -79,6 +79,18 @@ The notebook also compares Claude with VADER through cross-tabulation and produc
 
 - `claude_sentiment`
 - `vader_sentiment`
+
+## Results Table
+
+| Model | Accuracy | Macro-F1 (negative/positive) | Hard-cases accuracy | Sec / 1k preds | Cost / 1k preds |
+|---|---:|---:|---:|---:|---:|
+| VADER | 68.30% | 68.40% | Not measured | Not measured | $0 |
+| NLTK + Naive Bayes | 83.34% | 83.28% | Not measured | Not measured | ~$0 |
+| LLM zero-shot (Claude Haiku) | 92.00%* | 95.00%* | Not measured | Not measured | API usage required |
+
+\* Claude's 92.00% accuracy and 95.00% Macro-F1 for negative and positive classes were calculated on a 300-review sample. The other models were evaluated on the 10,000-review test split.
+
+Neither notebook defines a hard-case subset or measures prediction time, so hard-cases accuracy and seconds per 1,000 predictions are marked as not measured rather than estimated.
 
 ## Technologies Used
 
