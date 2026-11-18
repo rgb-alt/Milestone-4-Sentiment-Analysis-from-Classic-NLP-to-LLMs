@@ -11,7 +11,7 @@ This project compares three sentiment analysis approaches on the same dataset:
 
 - **VADER** (Rule-Based NLP)
 - **NLTK + Naïve Bayes** (Classical Machine Learning)
-- **LLM Zero-shot Classification** (Claude/OpenAI)
+- **LLM Zero-shot Classification** (Claude)
 
 The objective is to evaluate each method not only on prediction quality but also on practical considerations such as inference speed and cost.
 
@@ -23,49 +23,9 @@ The objective is to evaluate each method not only on prediction quality but also
 
 ---
 
-## Project Structure
-
-```text
-sentiment-project/
-│
-├── README.md
-├── requirements.txt
-├── prompts.md
-│
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── external/
-│
-├── notebooks/
-│   ├── 01_data.ipynb
-│   ├── 02_vader.ipynb
-│   ├── 03_classic_ml.ipynb
-│   ├── 04_llm.ipynb
-│   └── 05_compare.ipynb
-│
-├── src/
-│   ├── preprocess.py
-│   ├── vader_model.py
-│   ├── ml_model.py
-│   ├── llm_model.py
-│   ├── evaluation.py
-│   └── utils.py
-│
-├── results/
-│   ├── metrics.csv
-│   ├── leaderboard.csv
-│   ├── llm_cache.jsonl
-│   └── charts/
-│
-└── tests/
-```
-
----
-
 ## Dataset
 
-- IMDB Reviews
+- IMDB_Dataset
 
 Sentiment Labels:
 
@@ -79,11 +39,6 @@ Sentiment Labels:
 
 ### 1. Data Preparation
 
-Notebook:
-
-```text
-01_data.ipynb
-```
 
 Tasks:
 
@@ -98,17 +53,9 @@ Tasks:
 
 ### 2. Rule-Based Sentiment Analysis
 
-Notebook:
+Models evaluated:
 
-```text
-02_vader.ipynb
-```
-
-Model:
-
-```text
-VADER
-```
+- VADER
 
 Advantages:
 
@@ -125,38 +72,19 @@ Limitations:
 
 ### 3. Classical Machine Learning
 
-Notebook:
-
-```text
-03_classic_ml.ipynb
-```
-
 Models evaluated:
 
 - Naïve Bayes
-- Logistic Regression
-- Linear SVM
 
-Features:
-
-```text
-TF-IDF
-```
-
-Expected strongest baseline:
-
-```text
-Logistic Regression / Linear SVM
-```
-
+Approach
+- Bag of words
 ---
 
-### 4. LLM Sentiment Classification
+### 4. LLM Sentiment
 
-Notebook:
-
-```text
-04_llm.ipynb
-```
+Model Evaluated
 - Claude Haiku
+
+Approach
+- Prompt-based sentiment classification
 
